@@ -11,6 +11,7 @@ public class ExceptionAssertionsExercise
         Assert.Equal("data", exception.ParamName);
 
         // TODO: Napisz asercję sprawdzającą, czy metoda ValidateAge rzuca ArgumentOutOfRangeException dla wieku -5
+        Assert.Throws<ArgumentOutOfRangeException>(() => ValidateAge(-5));
     }
 
     [Fact]
@@ -20,6 +21,7 @@ public class ExceptionAssertionsExercise
         await Assert.ThrowsAsync<InvalidOperationException>(() => ProcessDataAsync(0));
 
         // TODO: Napisz asercję sprawdzającą, czy asynchroniczna metoda FetchUserDataAsync rzuca TimeoutException po upływie czasu oczekiwania
+        await Assert.ThrowsAsync<TimeoutException>(() => FetchUserDataAsync(1000));
     }
 
     // Metody pomocnicze do testów

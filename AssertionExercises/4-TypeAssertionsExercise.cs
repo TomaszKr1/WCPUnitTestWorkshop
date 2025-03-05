@@ -13,6 +13,8 @@ public class TypeAssertionsExercise
         Assert.IsAssignableFrom<Animal>(animal);
 
         // TODO: Napisz asercję sprawdzającą, czy metoda CreateAnimal zwraca obiekt typu Cat dla argumentu "cat"
+        Animal cat = CreateAnimal("cat");
+        Assert.IsType<Cat>(cat);
     }
 
     [Fact]
@@ -26,6 +28,9 @@ public class TypeAssertionsExercise
         Assert.NotSame(obj1, obj3);  // Różne referencje
 
         // TODO: Napisz asercję sprawdzającą, czy dwa wywołania metody GetSingletonInstance zwracają tę samą instancję
+        Singleton singleton1 = Singleton.GetSingletonInstance();
+        Singleton singleton2 = Singleton.GetSingletonInstance();
+        Assert.Same(singleton1, singleton2);
     }
 
     // Klasy pomocnicze do testów

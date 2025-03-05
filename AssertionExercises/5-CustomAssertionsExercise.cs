@@ -11,6 +11,9 @@ public class CustomAssertionsExercise
         Assert.Equal(expected, actual, new PersonComparer());
 
         // TODO: Napisz asercję używającą niestandardowego komparatora do porównania dwóch obiektów Product
+        Product product1 = new Product(1, "Product 1 White", 105, 80, "P1");
+        Product product2 = new Product(2, "Product 1 Black", 100, 80, "P1");
+        Assert.Equal(product1, product2, new ProductComparer());
     }
 
     [Fact]
@@ -25,6 +28,8 @@ public class CustomAssertionsExercise
             () => Assert.InRange(user.Person.Age, 18, 100));
 
         // TODO: Utwórz metodę pomocniczą AssertValidUser i użyj jej do sprawdzenia właściwości obiektu user
+        User user2 = GetUser() with { Person = GetPerson() };
+        AssertValidUser(user2);
     }
 
     // Metody i klasy pomocnicze do testów
@@ -47,5 +52,28 @@ public class CustomAssertionsExercise
         }
 
         public int GetHashCode(Person obj) => obj.Id.GetHashCode();
+    }
+
+    private class ProductComparer : IEqualityComparer<Product>
+    {
+        public bool Equals(Product x, Product y)
+        {
+            if (x == null && y == null) return true;
+            if (x == null || y == null) return false;
+            return x.Code == y.Code && x.BuyPrice == y.BuyPrice;
+        }
+
+        public int GetHashCode(Product obj) => obj.Id.GetHashCode();
+    }
+
+    private void AssertValidUser(User user)
+    {
+        Assert.NotNull(user);
+        Assert.True(user.IsActive);
+        Assert.NotNull(user.Person);
+        Assert.NotNull(user.Person.FirstName);
+        Assert.NotEmpty(user.Person.FirstName);
+        Assert.NotNull(user.Person.LastName);
+        Assert.NotEmpty(user.Person.LastName);
     }
 }

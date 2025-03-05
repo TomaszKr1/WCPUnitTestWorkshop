@@ -15,6 +15,9 @@ public class BasicAssertionsExercise
         Assert.Equal(expectedName, actualName);
 
         // TODO: Napisz asercjê sprawdzaj¹c¹, czy dwie zmienne typu double s¹ sobie równe z dok³adnoœci¹ do 0.001
+        double a = 1.23d;
+        double b = 1.23d;
+        Assert.Equal(a, b, 0.001d);
     }
 
     [Fact]
@@ -25,6 +28,8 @@ public class BasicAssertionsExercise
         Assert.True(isValid);
 
         // TODO: Napisz asercjê sprawdzaj¹c¹, czy ValidateInput zwraca false dla niepoprawnych danych
+        bool isInvalid = ValidateInput("incorrectInput");
+        Assert.False(isInvalid);
     }
 
     [Fact]
@@ -37,6 +42,8 @@ public class BasicAssertionsExercise
         Assert.NotNull(obj2);
 
         // TODO: Napisz asercjê sprawdzaj¹c¹, czy metoda CreateUserIfAuthorized zwraca null dla nieautoryzowanego dostêpu
+        string? result = CreateUserIfAuthorized("user", "newUser");
+        Assert.Null(result);
     }
 
     // Metody pomocnicze do testów

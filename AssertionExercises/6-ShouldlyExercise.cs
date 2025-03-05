@@ -17,6 +17,10 @@ public class ShouldlyExercise
         number.ShouldBeLessThan(50);
 
         // TODO: Napisz asercję używającą Shouldly do sprawdzenia, czy lista zwrócona przez GetUsers zawiera dokładnie 3 elementy i zawiera użytkownika o id równym 2
+        User[] users = GetUsers();
+        users.ShouldNotBeNull();
+        users.Length.ShouldBe(3);
+        users.ShouldContain(u => u.Id == 2);
     }
 
     private record struct User(int Id, string Name);

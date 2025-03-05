@@ -10,6 +10,7 @@ public class CollectionAssertionsExercise
         Assert.DoesNotContain("grape", fruits);
 
         // TODO: Napisz asercję sprawdzającą, czy lista zawiera element spełniający określony warunek
+        Assert.Contains(fruits, fruit => fruit.Length > 5);
     }
 
     [Fact]
@@ -22,6 +23,7 @@ public class CollectionAssertionsExercise
 
         int[] expected2 = [2, 4, 3, 1];
         // TODO: Napisz asercję sprawdzającą, czy dwie kolekcje zawierają te same elementy, ale niekoniecznie w tej samej kolejności
+        Assert.Equivalent(actual, expected2);
     }
 
     [Fact]
@@ -35,6 +37,9 @@ public class CollectionAssertionsExercise
         Assert.Single(nonEmptyList);
 
         // TODO: Napisz asercję sprawdzającą, czy kolekcja zwrócona przez GetUsers ma dokładnie 3 elementy
+        User[] users = GetUsers();
+        Assert.NotNull(users);
+        Assert.Equal(3, users.Length);
     }
 
     // Metody pomocnicze do testów
