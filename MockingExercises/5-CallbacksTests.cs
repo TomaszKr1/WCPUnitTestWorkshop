@@ -30,8 +30,6 @@ public class CallbacksTests
         User capturedUser = null;
 
         // TODO: Capture the user argument
-        userRepoMock.Setup(repo => repo.UpdateUser(It.IsAny<User>()))
-            .Callback<User>(user => capturedUser = user);
 
         var userService = new UserService(userRepoMock.Object);
         var newEmail = "newuser@example.com";

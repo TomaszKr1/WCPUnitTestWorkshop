@@ -20,7 +20,8 @@ public class CalculatorServiceTests
     {
         // Arrange
         // TODO: Change the mock behavior to strict.
-        var calculatorMock = new Mock<ICalculator>(MockBehavior.Strict);
+        var calculatorMock = new Mock<ICalculator>();
+
         calculatorMock
             .Setup(c => c.Add(It.IsAny<int>(), It.IsAny<int>()))
             .Returns((int a, int b) => a + b);
@@ -40,7 +41,8 @@ public class CalculatorServiceTests
     {
         // Arrange
         // TODO: Change the mock behavior to strict.
-        var calculatorMock = new Mock<ICalculator>(MockBehavior.Strict);
+        var calculatorMock = new Mock<ICalculator>();
+
         calculatorMock
             .Setup(c => c.Add(It.IsAny<int>(), It.IsAny<int>()))
             .Returns(0);

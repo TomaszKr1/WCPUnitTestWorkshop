@@ -40,10 +40,6 @@ public class SetupSequenceTests
         var mockService = new Mock<IRetryService>();
 
         // TODO: Setup a sequence: first call throws an exception, second call returns empty string, third returns valid data.
-        mockService.SetupSequence(s => s.GetData())
-            .Throws(new Exception())
-            .Returns(string.Empty)
-            .Returns("Success");
 
         var consumer = new DataConsumer(mockService.Object);
 

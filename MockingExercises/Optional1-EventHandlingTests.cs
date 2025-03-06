@@ -33,8 +33,6 @@ public class StockTraderTests
 
         // Act
         // TODO: Raise the PriceChanged event with the expected price
-        stockTickerMock.Raise(ticker => ticker.PriceChanged += null,
-            new PriceChangedEventArgs { Symbol = "MSFT", Price = expectedPrice });
 
         // Assert
         Assert.Equal(expectedPrice, trader.LastPrice);

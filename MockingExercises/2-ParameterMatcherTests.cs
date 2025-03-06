@@ -54,8 +54,6 @@ public class ParameterMatcherTests
 
         // Assert
         // TODO: Verify that the Add method was called once with a user that has the expected email and name.
-        mockUserRepository.Verify(r => r.Add(It.Is<User>(u =>
-            u.Email == "test@example.com")), Times.Once);
     }
 
     [Fact]
@@ -72,10 +70,6 @@ public class ParameterMatcherTests
 
         // Assert
         // TODO: Verify that the SendEmail method was called once with an email that has the expected recipient and subject
-        mockEmailSender.Verify(e => e.SendEmail(It.Is<Email>(email =>
-            email.Recipient == "test@example.com" &&
-            email.Subject == "Welcome, new user!"
-        )), Times.Once);
     }
 
     [Fact]
@@ -85,7 +79,6 @@ public class ParameterMatcherTests
         var mockRepository = new Mock<IUserRepository>();
 
         // TODO: Setup mockRepository to return 20 seats for a user with "test@example.com" email
-        mockRepository.Setup(r => r.GetSeats(It.Is<User>(u => u.Email == "test@example.com"))).Returns(20);
         
         var mockEmailSender = new Mock<IEmailSender>();
         var service = new UserRegistrationService(mockRepository.Object, mockEmailSender.Object);
@@ -96,9 +89,5 @@ public class ParameterMatcherTests
 
         // Assert
         // TODO: Verify that the SendEmail method was called once with an email that has the expected recipient and subject
-        mockEmailSender.Verify(e => e.SendEmail(It.Is<Email>(email =>
-            email.Recipient == "test@example.com" &&
-            email.Subject == "Welcome, enterprise user!"
-        )), Times.Once);
     }
 }

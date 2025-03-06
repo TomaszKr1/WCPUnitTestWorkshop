@@ -4,11 +4,12 @@ namespace MockingExercises.StaticTime;
 
 // TODO: Use TimeProvider to refactor GreeterService and its tests.
 
-public class GreeterService(TimeProvider timeProvider)
+
+public class GreeterService
 {
-    public string Greet()
+    public static string Greet()
     {
-        var date = timeProvider.GetUtcNow();
+        var date = DateTime.Now;
         return date.Hour switch
         {
             < 12 => "Good morning",
@@ -26,16 +27,8 @@ public class GreeterServiceTests
         // Arrange
         // TODO: Setup the mock to return a fixed date and time, either by FakeTimeProvider or Moq.
 
-        //FakeTimeProvider fake = new();
-        //fake.SetUtcNow(new DateTime(2025, 1, 1, 10, 0, 0));
-
-        Mock<TimeProvider> timeProviderMock = new();
-        timeProviderMock.Setup(x => x.GetUtcNow()).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
-
-        GreeterService greeterService = new(timeProviderMock.Object);
-
         // Act
-        var result = greeterService.Greet();
+        var result = GreeterService.Greet();
 
         // Assert
         Assert.Equal("Good morning", result);
@@ -46,13 +39,9 @@ public class GreeterServiceTests
     {
         // Arrange
         // TODO: Setup the mock to return a fixed date and time, either by FakeTimeProvider or Moq
-        Mock<TimeProvider> timeProviderMock = new();
-        timeProviderMock.Setup(x => x.GetUtcNow()).Returns(new DateTime(2025, 1, 1, 14, 0, 0));
-
-        GreeterService greeterService = new(timeProviderMock.Object);
 
         // Act
-        var result = greeterService.Greet();
+        var result = GreeterService.Greet();
 
         // Assert
         Assert.Equal("Good afternoon", result);
@@ -63,13 +52,9 @@ public class GreeterServiceTests
     {
         // Arrange
         // TODO: Setup the mock to return a fixed date and time, either by FakeTimeProvider or Moq.
-        Mock<TimeProvider> timeProviderMock = new();
-        timeProviderMock.Setup(x => x.GetUtcNow()).Returns(new DateTime(2025, 1, 1, 20, 0, 0));
-
-        GreeterService greeterService = new(timeProviderMock.Object);
 
         // Act
-        var result = greeterService.Greet();
+        var result = GreeterService.Greet();
 
         // Assert
         Assert.Equal("Good evening", result);

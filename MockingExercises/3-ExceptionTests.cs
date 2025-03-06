@@ -32,8 +32,6 @@ public class DataProcessorTests
         var dataServiceMock = new Mock<IDataService>();
 
         // TODO: Setup the mock to throw an InvalidOperationException when GetData is called.
-        dataServiceMock.Setup(ds => ds.GetData())
-            .Throws(new InvalidOperationException("Data error"));
 
         var processor = new DataProcessor(dataServiceMock.Object);
 

@@ -71,7 +71,6 @@ public class CompareToolsTests
 
         // Assert
         // TODO: Verify that the SendEmail method was called once with the expected recipient and messag using Moq.
-        mockEmailService.Verify(x => x.SendEmail("user@example.com", "Hello!"), Moq.Times.Once);
     }
 
     [Fact]
@@ -86,7 +85,6 @@ public class CompareToolsTests
 
         // Assert
         // TODO: Verify that the SendEmail method was called once with the expected recipient and messag using NSubstitute.
-        emailService.Received(1).SendEmail("user@example.com", "Hello!");
     }
 
     [Fact]
@@ -101,7 +99,5 @@ public class CompareToolsTests
 
         // Assert
         // TODO: Verify that the SendEmail method was called once with the expected recipient and messag using FakeItEasy.
-        A.CallTo(() => emailService.SendEmail("user@example.com", "Hello!"))
-            .MustHaveHappenedOnceExactly();
     }
 }

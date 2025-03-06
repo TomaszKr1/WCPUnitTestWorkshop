@@ -17,16 +17,13 @@ public class MyServiceTests
         // Arrange
         var myServiceMock = new Mock<MyService>();
         // TODO: Setup the mock to return "Mock Data" when GetData is called.
-        myServiceMock.Protected()
-            .Setup<string>("GetData")
-            .Returns("Mock Data");
 
         // Act
         var result = myServiceMock.Object.GetProcessedData();
 
         // Assert
         Assert.Equal("Processed Mock Data", result);
+
         // TODO: Verify that the protected method was called once.
-        myServiceMock.Protected().Verify("GetData", Times.Once());
     }
 }
